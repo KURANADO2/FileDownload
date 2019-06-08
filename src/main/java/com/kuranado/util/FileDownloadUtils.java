@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 并行流下载多个文件
+ *
  * @Author: Xinling Jing
  * @Date: 2019-06-07 19:21
  */
@@ -39,10 +41,13 @@ public class FileDownloadUtils {
     }
 
     public static void main(String[] args) {
+        long beginTime = System.currentTimeMillis();
         // 此 List 用于存放下载 url
         List<String> urlList = new ArrayList<>();
+        /// urlList.add(...);
         String dirname = String.valueOf(System.currentTimeMillis());
         urlList.parallelStream().forEach(url -> downloadFromUrl(url, "/Users/jing/Downloads/ " + dirname + "/"));
+        System.out.println("下载耗时:" + (double) (System.currentTimeMillis() - beginTime) / 1000 + " s");
     }
 
 }
