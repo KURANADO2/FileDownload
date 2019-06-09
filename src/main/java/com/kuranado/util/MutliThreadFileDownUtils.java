@@ -17,7 +17,7 @@ import java.util.concurrent.CountDownLatch;
  * @Date: 2019-06-08 12:44
  */
 @Data
-public class DownFile {
+public class MutliThreadFileDownUtils {
 
     /**
      * 文件下载 url
@@ -45,7 +45,7 @@ public class DownFile {
     private DownThread[] downThreads;
     private static CountDownLatch countDownLatch;
 
-    private DownFile(URL fileUrl, int threadCount, String pathName) throws IOException {
+    private MutliThreadFileDownUtils(URL fileUrl, int threadCount, String pathName) throws IOException {
         this.fileUrl = fileUrl;
         this.threadCount = threadCount;
         this.pathName = pathName;
@@ -164,9 +164,9 @@ public class DownFile {
 
     public static void main(String[] args) throws IOException, InterruptedException {
         long beginTime = System.currentTimeMillis();
-        new DownFile(new URL("https://download.jetbrains.8686c.com/go/goland-2019.1.3.dmg"), 4, "/Users/jing" +
+        new MutliThreadFileDownUtils(new URL("https://download.jetbrains.8686c.com/go/goland-2019.1.3.dmg"), 4, "/Users/jing" +
             "/Downloads/golang.dmg").startDown();
-        //new DownFile(new URL("http://f.hiphotos.baidu.com/image/pic/item/b151f8198618367aa7f3cc7424738bd4b31ce525" +
+        //new MutliThreadFileDownUtils(new URL("http://f.hiphotos.baidu.com/image/pic/item/b151f8198618367aa7f3cc7424738bd4b31ce525" +
         //    ".jpg"), 3, "/Users/jing/Downloads/test.jpg").startDown();
 
         // 阻塞当前线程，直到 countDownLatch 中数值为 0 后继续执行当前线程

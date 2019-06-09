@@ -13,7 +13,7 @@ import java.util.List;
  * @Author: Xinling Jing
  * @Date: 2019-06-07 19:21
  */
-public class FileDownloadUtils {
+public class ParallelStreamFileDownUtils {
 
     public static void downloadFromUrl(String url, String dir) {
 
@@ -46,7 +46,7 @@ public class FileDownloadUtils {
         List<String> urlList = new ArrayList<>();
         /// urlList.add(...);
         String dirname = String.valueOf(System.currentTimeMillis());
-        urlList.parallelStream().forEach(url -> downloadFromUrl(url, "/Users/jing/Downloads/ " + dirname + "/"));
+        urlList.parallelStream().forEach(url -> downloadFromUrl(url, "/Users/jing/Downloads/" + dirname + "/"));
         System.out.println("下载耗时:" + (double) (System.currentTimeMillis() - beginTime) / 1000 + " s");
     }
 
